@@ -245,7 +245,7 @@ func (comp *Compiler) resolveCatalogRefs(qc *QueryCatalog, rvs []*ast.RangeVar, 
 								Table:         table,
 								IsNamedParam:  isNamed,
 								IsSqlcSlice:   p.IsSqlcSlice(),
-								IsDefaultNull: c.IsDefaultNull,
+								IsDefaultNull: c.RawDefault.Pos() == 0,
 							},
 						})
 					}

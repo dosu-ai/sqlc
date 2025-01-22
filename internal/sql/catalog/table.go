@@ -332,15 +332,16 @@ func (c *Catalog) createTable(stmt *ast.CreateTableStmt) error {
 
 func (c *Catalog) defineColumn(table *ast.TableName, col *ast.ColumnDef) (*Column, error) {
 	tc := &Column{
-		Name:       col.Colname,
-		Type:       *col.TypeName,
-		IsNotNull:  col.IsNotNull,
-		IsUnsigned: col.IsUnsigned,
-		IsArray:    col.IsArray,
-		ArrayDims:  col.ArrayDims,
-		Comment:    col.Comment,
-		Length:     col.Length,
-		RawDefault: col.RawDefault,
+		Name:          col.Colname,
+		Type:          *col.TypeName,
+		IsNotNull:     col.IsNotNull,
+		IsUnsigned:    col.IsUnsigned,
+		IsArray:       col.IsArray,
+		ArrayDims:     col.ArrayDims,
+		Comment:       col.Comment,
+		Length:        col.Length,
+		RawDefault:    col.RawDefault,
+		IsDefaultNull: col.RawDefault == nil,
 	}
 	if col.Vals != nil {
 		typeName := ast.TypeName{
