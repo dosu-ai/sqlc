@@ -40,6 +40,27 @@ func isNotNull(n *pcast.ColumnDef) bool {
 	return false
 }
 
+// NOTE: This is a placeholder! It isn't tested!
+// https://github.com/pingcap/tidb/blob/35f329d3adaf9108a3eb97537937bf5d89dc626f/pkg/parser/ast/ast.go#L4
+func isDefaultNull(n *pcast.ColumnDef) bool {
+	if isNotNull(n) {
+		return false
+	}
+	// get the default value option
+	if len(n.Options) == 0 {
+		return false
+	}
+	// check if the default value is null
+	for i := range n.Options {
+		if n.Options[i].Tp == pcast.ColumnOptionDefaultValue {
+			if n.Options[i].Expr == nil {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func convertToRangeVarList(list *ast.List, result *ast.List) {
 	if len(list.Items) == 0 {
 		return

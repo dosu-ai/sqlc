@@ -120,14 +120,16 @@ func (table *Table) setNotNull(cmd *ast.AlterTableCmd) error {
 //
 // TODO: Should this just be ast Nodes?
 type Column struct {
-	Name       string
-	Type       ast.TypeName
-	IsNotNull  bool
-	IsUnsigned bool
-	IsArray    bool
-	ArrayDims  int
-	Comment    string
-	Length     *int
+	Name          string
+	Type          ast.TypeName
+	IsNotNull     bool
+	IsUnsigned    bool
+	IsArray       bool
+	ArrayDims     int
+	Comment       string
+	Length        *int
+	IsDefaultNull bool
+	RawDefault    ast.Node
 
 	linkedType bool
 }
@@ -338,6 +340,7 @@ func (c *Catalog) defineColumn(table *ast.TableName, col *ast.ColumnDef) (*Colum
 		ArrayDims:  col.ArrayDims,
 		Comment:    col.Comment,
 		Length:     col.Length,
+		RawDefault: col.RawDefault,
 	}
 	if col.Vals != nil {
 		typeName := ast.TypeName{

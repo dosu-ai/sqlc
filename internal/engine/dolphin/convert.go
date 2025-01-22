@@ -250,12 +250,13 @@ func convertColumnDef(def *pcast.ColumnDef) *ast.ColumnDef {
 		}
 	}
 	columnDef := ast.ColumnDef{
-		Colname:    def.Name.String(),
-		TypeName:   &ast.TypeName{Name: types.TypeToStr(def.Tp.GetType(), def.Tp.GetCharset())},
-		IsNotNull:  isNotNull(def),
-		IsUnsigned: isUnsigned(def),
-		Comment:    comment,
-		Vals:       vals,
+		Colname:       def.Name.String(),
+		TypeName:      &ast.TypeName{Name: types.TypeToStr(def.Tp.GetType(), def.Tp.GetCharset())},
+		IsNotNull:     isNotNull(def),
+		IsDefaultNull: isDefaultNull(def),
+		IsUnsigned:    isUnsigned(def),
+		Comment:       comment,
+		Vals:          vals,
 	}
 	if def.Tp.GetFlen() >= 0 {
 		length := def.Tp.GetFlen()

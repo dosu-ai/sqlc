@@ -109,7 +109,8 @@
                 "embed_table": null,
                 "original_name": "",
                 "unsigned": false,
-                "array_dims": 0
+                "array_dims": 0,
+                "default_null": true
               }
             ],
             "comment": ""
@@ -65043,7 +65044,8 @@
           "embed_table": null,
           "original_name": "bio",
           "unsigned": false,
-          "array_dims": 0
+          "array_dims": 0,
+          "default_null": true
         }
       ],
       "params": [
@@ -65162,7 +65164,8 @@
           "embed_table": null,
           "original_name": "bio",
           "unsigned": false,
-          "array_dims": 0
+          "array_dims": 0,
+          "default_null": true
         }
       ],
       "params": [],
@@ -65251,7 +65254,8 @@
           "embed_table": null,
           "original_name": "bio",
           "unsigned": false,
-          "array_dims": 0
+          "array_dims": 0,
+          "default_null": true
         }
       ],
       "params": [
@@ -65310,7 +65314,8 @@
             "embed_table": null,
             "original_name": "bio",
             "unsigned": false,
-            "array_dims": 0
+            "array_dims": 0,
+          "default_null": true
           }
         }
       ],

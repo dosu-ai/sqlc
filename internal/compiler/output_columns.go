@@ -33,6 +33,7 @@ func (c *Compiler) OutputColumns(stmt ast.Node) ([]*catalog.Column, error) {
 			ArrayDims:  col.ArrayDims,
 			Comment:    col.Comment,
 			Length:     col.Length,
+			// EDIT?
 		})
 	}
 	return catCols, nil
